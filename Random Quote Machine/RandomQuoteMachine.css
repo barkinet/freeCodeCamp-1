@@ -12,6 +12,7 @@
 .footer {
     display: flex;
     justify-content: space-between;
+    /* ^^ this!! for the longest time!!! couldnt even!*/
     padding: 0 10px 10px;
     position: relative;
 }
