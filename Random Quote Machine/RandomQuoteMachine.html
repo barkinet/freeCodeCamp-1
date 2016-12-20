@@ -13,24 +13,31 @@
         </div>
     </div>
     <script>
+        // Get random quote
         document.getElementById("newQuote").onclick = getQuotes;
 
         function fetchQuotes(callback) {
-
+            // arnold json gist
             const endpoint =
                 'https://gist.githubusercontent.com/spences10/ceee092f6fed36559036c94682b7a5f7/raw/7a27570759834ee454ee380ca42ebd47dc55e932/arnold_quotes.json'
-
+            // fetch gist
             fetch(endpoint)
                 .then(blob => blob.json())
                 .then(data => callback(data));
         }
 
+        // callback for quotes promise
         function getQuotes() {
             fetchQuotes(function (quotes) {
 
                 // get random quote from JSON 
                 const quoteID = getRandomInt(1, 100);
+
+                // get json data
                 var quoteStr = quotes[quoteID].quote
+                var movieStr = quotes[quoteID].movie
+                var characterStr = quotes[quoteID].character
+                
                 alert(quoteStr);
 
             })
