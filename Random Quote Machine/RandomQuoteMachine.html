@@ -12,15 +12,20 @@
             </div>
         </div>
     </div>
+    <!--or just add the JS directly to the HTML file, that's ok, right?-->
     <script>
         // Get random quote
         document.getElementById("newQuote").onclick = getQuotes;
+        //  Get new image
+        document.getElementById("newImage").onclick = getImage;
+        // Tweet the quote
+        document.getElementById("tweetQuote").onclick = tweetQuote;
 
         function fetchQuotes(callback) {
             // arnold json gist
             const endpoint =
                 'https://gist.githubusercontent.com/spences10/ceee092f6fed36559036c94682b7a5f7/raw/7a27570759834ee454ee380ca42ebd47dc55e932/arnold_quotes.json'
-            // fetch gist
+                // fetch gist
             fetch(endpoint)
                 .then(blob => blob.json())
                 .then(data => callback(data));
@@ -37,7 +42,7 @@
                 var quoteStr = quotes[quoteID].quote
                 var movieStr = quotes[quoteID].movie
                 var characterStr = quotes[quoteID].character
-                
+
                 alert(quoteStr);
 
             })
@@ -46,6 +51,16 @@
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
+
+        function getImage() {
+            alert("image");
+        }
+
+        function tweetQuote() {
+            alert("tweet");
+        }
+
+
     </script>
     <!-- LAST LINE for the JavaScript file -->
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
