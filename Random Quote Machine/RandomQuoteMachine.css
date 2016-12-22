@@ -20,3 +20,8 @@
 h1 {
     font-family: Orbitron, monospace;
 }
+
+#heading h2,
+h3 {
+    display: inline;
+}

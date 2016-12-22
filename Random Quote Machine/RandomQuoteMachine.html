@@ -19,6 +19,9 @@
     </div>
     <!--or just add the JS directly to the HTML file, that's ok, right?-->
     <script>
+        window.onload = function () {
+            getQuotes();
+        };
         // Get random quote
         document.getElementById("newQuote").onclick = getQuotes;
         //  Get new image
