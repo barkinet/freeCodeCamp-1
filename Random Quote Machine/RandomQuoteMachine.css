@@ -16,3 +16,7 @@
     padding: 0 10px 10px;
     position: relative;
 }
+
+h1 {
+    font-family: Orbitron, monospace;
+}

@@ -4,7 +4,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="RandomQuoteMachine.css" rel="stylesheet" type="text/css">
     <div class="container">
-        <div id="quotes" class="well center-block">
+        <div class="well center-block">
+            <h1 id="quotes"></h1>
+            <h2 class="kanit" id="character"></h2>
+            <h3 class="kanit" id="movie"></h3>
         </div>
         <div class="well center-block">
             <div class="footer">
@@ -32,40 +35,31 @@
                 .then(blob => blob.json())
                 .then(data => callback(data));
         }
-
         // callback for quotes promise
         function getQuotes() {
+            clearBox();
             fetchQuotes(function (quotes) {
-
                 // get random quote from JSON 
                 const quoteID = getRandomInt(1, 100);
-
                 // get json data
                 var quoteStr = quotes[quoteID].quote
                 var movieStr = quotes[quoteID].movie
                 var characterStr = quotes[quoteID].character
-
                 var para = document.createElement("p");
                 var node = document.createTextNode(quoteStr);
-                para.appendChild(node);
-
                 var element = document.getElementById("quotes");
+                para.appendChild(node);
                 element.appendChild(para);
-
                 para = document.createElement("p");
                 node = document.createTextNode(movieStr);
+                element = document.getElementById("movie");
                 para.appendChild(node);
-
-                element = document.getElementById("quotes");
                 element.appendChild(para);
-
                 para = document.createElement("p");
                 node = document.createTextNode(characterStr);
+                element = document.getElementById("character");
                 para.appendChild(node);
-
-                element = document.getElementById("quotes");
                 element.appendChild(para);
-
             })
         }
 
@@ -79,6 +73,12 @@
 
         function tweetQuote() {
             alert("tweet");
+        }
+
+        function clearBox() {
+            document.getElementById("quotes").innerHTML = "";
+            document.getElementById("movie").innerHTML = "";
+            document.getElementById("character").innerHTML = "";
         }
     </script>
     <!-- LAST LINE for the JavaScript file -->
