@@ -3,14 +3,18 @@
     <link href="https://fonts.googleapis.com/css?family=Kanit|Orbitron" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="RandomQuoteMachine.css" rel="stylesheet" type="text/css">
-    <div class="container">
-        <div class="well center-block">
-            <h1 id="quotes"></h1>
-            <h2 id="character-movie"></h2>
-            <div class="footer"></div>
-                <button id="newQuote" class="btn btn-primary" onclick="getQuotes();">NEW QUOTE</button>
-                <button id="newImage" class="btn btn-primary">NEW IMAGE</button>
-                <button id="tweetQuote" class="btn btn-primary">TWEET QUOTE</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <div class="well center-block">
+                    <h1 id="quotes"></h1>
+                    <h2 id="character-movie"></h2>
+                    <div class="footer">
+                        <button id="newQuote" class="btn btn-primary btn-responsive" onclick="getQuotes();">NEW QUOTE</button>
+                        <button id="newImage" class="btn btn-primary btn-responsive">NEW IMAGE</button>
+                        <button id="tweetQuote" class="btn btn-primary btn-responsive">TWEET QUOTE</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-.container {
+/*.container {
     color: #000000;
     left: 50%;
     margin: auto;
@@ -7,14 +7,19 @@
     top: 50%;
     transform: translate(-50%, -50%);
     width: 640px;
+}*/
+
+div.row {
+    margin: 120px 0;
 }
 
 .footer {
     display: flex;
     justify-content: space-between;
     /* ^^ this!! for the longest time!!! couldnt even!*/
-    padding: 0 10px 10px;
+    padding: 0 1px 1px;
     position: relative;
+    white-space: normal;
 }
 
 h1 {
