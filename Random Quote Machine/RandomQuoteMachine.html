@@ -6,11 +6,8 @@
     <div class="container">
         <div class="well center-block">
             <h1 id="quotes"></h1>
-            <h2 class="kanit" id="character"></h2>
-            <h3 class="kanit" id="movie"></h3>
-        </div>
-        <div class="well center-block">
-            <div class="footer">
+            <h2 id="character-movie"></h2>
+            <div class="footer"></div>
                 <button id="newQuote" class="btn btn-primary" onclick="getQuotes();">NEW QUOTE</button>
                 <button id="newImage" class="btn btn-primary">NEW IMAGE</button>
                 <button id="tweetQuote" class="btn btn-primary">TWEET QUOTE</button>
@@ -46,21 +43,15 @@
                 const quoteID = getRandomInt(1, 100);
                 // get json data
                 var quoteStr = quotes[quoteID].quote
-                var movieStr = quotes[quoteID].movie
-                var characterStr = quotes[quoteID].character
+                var characterMovieStr = quotes[quoteID].character + ' - ' + quotes[quoteID].movie
                 var para = document.createElement("p");
                 var node = document.createTextNode(quoteStr);
                 var element = document.getElementById("quotes");
                 para.appendChild(node);
                 element.appendChild(para);
                 para = document.createElement("p");
-                node = document.createTextNode(movieStr);
-                element = document.getElementById("movie");
-                para.appendChild(node);
-                element.appendChild(para);
-                para = document.createElement("p");
-                node = document.createTextNode(characterStr);
-                element = document.getElementById("character");
+                node = document.createTextNode(characterMovieStr);
+                element = document.getElementById("character-movie");
                 para.appendChild(node);
                 element.appendChild(para);
             })
@@ -80,8 +71,7 @@
 
         function clearBox() {
             document.getElementById("quotes").innerHTML = "";
-            document.getElementById("movie").innerHTML = "";
-            document.getElementById("character").innerHTML = "";
+            document.getElementById("character-movie").innerHTML = "";
         }
     </script>
     <!-- LAST LINE for the JavaScript file -->
