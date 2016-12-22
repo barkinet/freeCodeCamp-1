@@ -10,7 +10,7 @@
 }*/
 
 div.row {
-    margin: 120px 0;
+    margin: 100px 0;
 }
 
 .footer {
@@ -19,7 +19,6 @@ div.row {
     /* ^^ this!! for the longest time!!! couldnt even!*/
     padding: 0 1px 1px;
     position: relative;
-    white-space: normal;
 }
 
 h1 {
@@ -28,4 +27,14 @@ h1 {
 
 h2 {
     font-family: Kanit, monospace;
+}
+
+#newQuote {
+    white-space: normal;
+}
+#newImage {
+    white-space: normal;
+}
+#tweetQuote {
+    white-space: normal;
 }
