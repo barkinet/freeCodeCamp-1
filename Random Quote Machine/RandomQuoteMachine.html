@@ -4,6 +4,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="RandomQuoteMachine.css" rel="stylesheet" type="text/css">
     <div class="container">
+        <div id="quotes" class="well center-block">
+        </div>
         <div class="well center-block">
             <div class="footer">
                 <button id="newQuote" class="btn btn-primary" onclick="getQuotes();">NEW QUOTE</button>
@@ -43,7 +45,26 @@
                 var movieStr = quotes[quoteID].movie
                 var characterStr = quotes[quoteID].character
 
-                alert(quoteStr);
+                var para = document.createElement("p");
+                var node = document.createTextNode(quoteStr);
+                para.appendChild(node);
+
+                var element = document.getElementById("quotes");
+                element.appendChild(para);
+
+                para = document.createElement("p");
+                node = document.createTextNode(movieStr);
+                para.appendChild(node);
+
+                element = document.getElementById("quotes");
+                element.appendChild(para);
+
+                para = document.createElement("p");
+                node = document.createTextNode(characterStr);
+                para.appendChild(node);
+
+                element = document.getElementById("quotes");
+                element.appendChild(para);
 
             })
         }
@@ -59,8 +80,6 @@
         function tweetQuote() {
             alert("tweet");
         }
-
-
     </script>
     <!-- LAST LINE for the JavaScript file -->
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
