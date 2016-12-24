@@ -10,8 +10,8 @@
                     <h1 id="quotes"></h1>
                     <h2 id="character-movie"></h2>
                     <div class="footer">
-                        <button id="newQuote" class="btn btn-primary btn-responsive" onclick="getQuotes();">NEW QUOTE</button>
-                        <button id="newImage" class="btn btn-primary btn-responsive">NEW IMAGE</button>
+                        <button id="newQuote" class="btn btn-primary btn-responsive">NEW QUOTE</button>
+                        <!--<button id="newImage" class="btn btn-primary btn-responsive">NEW IMAGE</button>-->
                         <button id="tweetQuote" class="btn btn-primary btn-responsive">TWEET QUOTE</button>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
         // Get random quote
         document.getElementById("newQuote").onclick = getQuotes;
         //  Get new image
-        document.getElementById("newImage").onclick = getImage;
+        // document.getElementById("newImage").onclick = getImage;
         // Tweet the quote
         document.getElementById("tweetQuote").onclick = tweetQuote;
 
@@ -65,18 +65,61 @@
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
-        function getImage() {
-            alert("image");
-        }
+        // function getImage() {
+        //     display_random_image();
+        // }
 
         function tweetQuote() {
-            alert("tweet");
+            var quoteStr = document.getElementById("quotes").innerText + ' - ' +
+                document.getElementById("character-movie").innerText + ' %23arniequotes';
+            window.open("https://twitter.com/home?status=" + quoteStr);
         }
 
         function clearBox() {
             document.getElementById("quotes").innerHTML = "";
             document.getElementById("character-movie").innerHTML = "";
         }
+
+        //         function display_random_image() {
+        //             var theImages = [{
+        //                 src: "http://media.gettyimages.com/photos/body-builder-actor-and-future-governor-of-california-arnold-poses-a-picture-id83149193",
+        //                 width: 500
+        //             }, {
+        //                 src: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+        //                 width: "320"
+        //             }, {
+        //                 src: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg",
+        //                 width: "500"
+        //             }];
+
+        //             var preBuffer = [];
+        //             for (var i = 0, j = theImages.length; i < j; i++) {
+        //                 preBuffer[i] = new Image();
+        //                 preBuffer[i].src = theImages[i].src;
+        //                 preBuffer[i].width = theImages[i].width;
+        //             }
+
+        //             // create random image number  
+        //             function getRandomInt(min, max) {
+        //                 //  return Math.floor(Math.random() * (max - min + 1)) + min;  
+
+        //                 imn = Math.floor(Math.random() * (max - min + 1)) + min;
+        //                 return preBuffer[imn];
+        //             }
+
+        //             // 0 is first image,   preBuffer.length - 1) is  last image  
+
+        //             var newImage = getRandomInt(0, preBuffer.length - 1);
+
+        //             // remove the previous images  
+        //             var images = document.getElementsByTagName('img');
+        //             var l = images.length;
+        //             for (var p = 0; p < l; p++) {
+        //                 images[0].parentNode.removeChild(images[0]);
+        //             }
+        //             // display the image    
+        //             document.body.appendChild(newImage);
+        //         }
     </script>
     <!-- LAST LINE for the JavaScript file -->
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
