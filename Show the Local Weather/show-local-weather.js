@@ -51,6 +51,12 @@ $("#toggleTemp").on("click", function () {
 
 });
 
+$("#changeImage").on("click", function () {
+
+    location.reload();
+
+});
+
 $(document).ready(function () {
 
     // Using freegeoip.net as ip-api.com showed me as in Rushden ~100 miles from my actual location
@@ -97,5 +103,4 @@ $(document).ready(function () {
             var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
             $('body').css('background-image', "url('" + image_src + "')");
         });
-
 });
