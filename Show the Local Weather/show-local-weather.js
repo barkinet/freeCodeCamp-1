@@ -53,7 +53,7 @@ $("#toggleTemp").on("click", function () {
 
 $("#changeImage").on("click", function () {
 
-    location.reload();
+    location.reload(false);
 
 });
 
@@ -92,7 +92,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    var keyword = $("#main").text + ', weather, landscape' ;
+    var keyword = $("#main").text + ', weather, landscape';
     $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", {
             tags: keyword,
             tagmode: "any",
@@ -102,5 +102,10 @@ $(document).ready(function () {
             var rnd = Math.floor(Math.random() * data.items.length);
             var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
             $('body').css('background-image', "url('" + image_src + "')");
+            $('body').css({
+                "background-size": "cover",
+                "background-attachment": "fixed",
+                "background-repeat": "no-repeat"
+            });
         });
 });
