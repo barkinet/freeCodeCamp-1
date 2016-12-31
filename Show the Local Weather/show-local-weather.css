@@ -6,4 +6,9 @@ body {
     font-family: 'Kanit', sans-serif;
     font-size: 16px;
     background: #E0E0E0;
+    background-size: cover;
+}
+
+.well {
+   background-color: rgba(245, 245, 245, 0.4);
 }
