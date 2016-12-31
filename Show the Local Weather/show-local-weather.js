@@ -46,29 +46,8 @@ Parameters:
 
 $("#toggleTemp").on("click", function () {
 
-    // reset vars
-    tempC = null;
-    tempF = null;
-
-    // get celcius value from $("#temp") 
-    const value = $('#temp').text();
-
-    var tempC = value.replace(/[^0-9\.]+/g, "");
-    var tempF = Math.round(tempC * 1.8000 + 32);
-    tempF += '° F';
-
-    // value.val(value.val() == value ? tempF : value);
-    // $("#temp").html('<h1>' + value + '</h1>');
-
-
-    if ($("#temp").text() == "My Title" || $("#temp").text() == tempF) {
-        title = value;
-    } else {
-        title = tempF;
-    }
-
-    $("#temp").text(title);
-
+    $("#tempC").toggle(0);
+    $("#tempF").toggle(0);
 
 });
 
@@ -96,7 +75,9 @@ $(document).ready(function () {
             var tempC = Math.round(temp - 273.15);
 
             $("#main").html('<h1>' + myWeather[0].main + '</h1>');
-            $("#temp").html('<h1>' + tempC + '° C</h1>'); // default to Metric
+            $("#tempC").html('<h1>' + tempC + '° C</h1>'); // default to Metric
+            $("#tempF").html('<h1>' + tempF + '° F</h1>');
+            $("#tempF").toggle(0);
 
         });
 
