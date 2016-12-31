@@ -5,16 +5,22 @@
     <link href="show-local-weather.css" rel="stylesheet" type="text/css">
     <div class="container-fluid">
         <div class="row text-center">
-            <h2>Local Weather</h2>
+            <h1>Local Weather</h1>
         </div>
         <div class="row text-center">
-            <div class="col-xs-12 well data">
+            <div id="location" class="col-xs-12 well">
+                The location will go here
+            </div>
+            <div id="main" class="col-xs-12 well">
                 The data will go here
+            </div>
+            <div id="temp" class="col-xs-12 well">
+                The temp will go here
             </div>
         </div>
         <div class="row text-center">
             <div class="col-xs-12">
-                <button id="getData" class="btn btn-primary">Get Data</button>
+                <button id="toggleTemp" class="btn btn-primary">Display: °F / °C</button>
             </div>
         </div>
     </div>
