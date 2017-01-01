@@ -1,14 +1,32 @@
 body {
-  padding: 20px 20px 100px 20px;
-  font-family: 'Kanit', sans-serif;
+    padding: 20px 20px 100px 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    /* 40px/16=2.5em */
+    font-family: 'Orbitron', sans-serif;
+}
+
+h2 {
+    font-size: 1.875em;
+    /* 30px/16=1.875em */
+    font-family: 'Kanit', sans-serif;
+}
+
+p {
+    font-size: 0.875em;
+    /* 14px/16=0.875em */
 }
 
 .search-row {
-  margin-top: 14px;
-  margin-bottom: 14px;
+    margin-top: 14px;
+    margin-bottom: 14px;
 }
 
+
 /* centered columns styles */
+
 .row-centered {
     text-align: center;
 }
@@ -22,38 +40,38 @@ body {
     margin-right: -4px;
 }
 
+
 /*pretify the search box*/
+
 .search-row {
-  margin-top: 14px;
-  margin-bottom: 14px;
+    margin-top: 14px;
+    margin-bottom: 14px;
 }
+
 .random {
-  border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
 }
+
+
 /* centered columns styles */
+
 .row-centered {
     text-align: center;
 }
 
-/*header duh!*/
-header {
-  margin: 0 auto;
-  
-  text-align: center;
 
-  h1 {
-    margin: 0;
-    
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    
-    color: @color-brown;
-  }
-  
-  img {
-    width: 150px;
-    margin: 5px 0;
-  }
+/*header duh!*/
+
+header {
+    margin: 0 auto;
+    text-align: center;
+    h1 {
+        margin: 0;
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: @color-brown;
+    }
 }
