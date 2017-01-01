@@ -1,16 +1,32 @@
-<body>
-    <!--CSS FILES -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <div class="row">
+    <link href="wikipedia-viewer.css" rel="stylesheet">
+    <!--Script in header using either async or defer-->
+    <script type="text/javascript" src="wikipedia-viewer.js" async></script>
+</head>
+
+<body>
+    <div class="search-row row row-centered">
         <div class="col-xs-10 col-centered">
             <div class="input-group">
-                <input type="text"> hello
-                <span>
+                <input type="text" class="search form-control input-lg" placeholder="Search Wikipedia">
+                <span class="input-group-btn">
                     <a href="https://en.wikipedia.org/wiki/Special:Random">
-                    <button class="btn" type="button">Random Article</button>
+                        <button class="random btn btn-warning input-lg" type="button">Random Article</button>
                     </a>
                 </span>
             </div>
         </div>
     </div>
 </body>
+<footer>
+</footer>
+<!--add lets connect stuff-->
+
+</html>
