@@ -62,7 +62,7 @@ $(document).ready(function () {
     // Using freegeoip.net as ip-api.com showed me as in Rushden ~100 miles from my actual location
     $.getJSON('https://freegeoip.net/json/?callback=?', function (loc) {
 
-        $('#location').html('<h1>' + loc.city + ', ' + loc.region_name + ', ' + loc.country_name + '</h1>');
+        $('#location').html('<h2>' + loc.city + ', ' + loc.region_name + ', ' + loc.country_name + '</h2>');
 
         var lat = loc.latitude;
         var lon = loc.longitude;
@@ -80,9 +80,9 @@ $(document).ready(function () {
             var tempF = Math.round(temp * 9 / 5 - 459.67);
             var tempC = Math.round(temp - 273.15);
 
-            $("#main").html('<h1>' + myWeather[0].main + '</h1>');
-            $("#tempC").html('<h1>' + tempC + '° C</h1>'); // default to Metric
-            $("#tempF").html('<h1>' + tempF + '° F</h1>');
+            $("#main").html('<h2>' + myWeather[0].main + '</h2>');
+            $("#tempC").html('<h2>' + tempC + '° C</h2>'); // default to Metric
+            $("#tempF").html('<h2>' + tempF + '° F</h2>');
             $("#tempF").toggle(0);
 
         });

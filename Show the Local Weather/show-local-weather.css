@@ -1,5 +1,11 @@
+h1 {
+    font-size: 4em;
+    /*color: #2f84ea*/
+}
+
 h2 {
     font-family: Orbitron, monospace;
+    /*font-size: 3.5em;*/
 }
 
 body {
@@ -11,4 +17,5 @@ body {
 
 .well {
    background-color: rgba(245, 245, 245, 0.4);
+   
 }
