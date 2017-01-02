@@ -1,13 +1,15 @@
-$(document).ready(function () {
-    
-    $.ajax({
-        type: "method",
-        url: "url",
-        data: "data",
-        dataType: "dataType",
-        success: function (response) {
-            
-        }
+var search = $('.search');
+var results = $('.results');
+
+search.keyup(function () {
+
+    $.getJSON("http://en.wikipedia.org/w/api.php?action=parse&format=json&callback=?", {
+        page: search.val(),
+        prop: "text"
+    }, function (data) {
+        console.log(data);
     });
+
+    results = 'hell0'
 
 });
