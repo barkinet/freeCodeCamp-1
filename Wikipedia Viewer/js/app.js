@@ -1,15 +1,30 @@
-var search = $('.search');
-var results = $('.results');
+$(document).ready(function(){
 
-search.keyup(function () {
+		$('.search').keyup(function(event){
+			var keyword = $(this).val();
+			if(event.keyCode == 13){
+				getSearchResults(keyword);
+			}
+		});
+	});
 
-    $.getJSON("http://en.wikipedia.org/w/api.php?action=parse&format=json&callback=?", {
-        page: search.val(),
-        prop: "text"
-    }, function (data) {
-        console.log(data);
-    });
+	function getSearchResults(val){
+		var api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
+		var page='https://en.wikipedia.org/?curid=';
 
-    results = 'hell0'
+		$.get(api+val,function(data){
+			var pages = data.query.pages;
+			//console.log(pages);
+			$('.list').empty();
+			for(var p in pages){
+				if(pages.hasOwnProperty(p)){
+					//console.log(pages[p].title);
 
-});
+
+
+					$('.list').append('<div class="result"><li><a href="'+page+pages[p].pageid+'" target="_blank">'+pages[p].title+'<br><br><p id="des">'+pages[p].extract+'<p></a></li></div><br>');
+				}
+			}
+
+		},"jsonp");
+	}
