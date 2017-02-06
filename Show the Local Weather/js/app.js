@@ -1,5 +1,5 @@
 /*
- 
+
 https://openweathermap.org/current
 
 Parameters:
@@ -44,68 +44,58 @@ Parameters:
 
 */
 
-$("#toggleTemp").on("click", function () {
+$('#toggleTemp').on('click', function () {
+  $('#tempC').toggle(0)
+  $('#tempF').toggle(0)
+})
 
-    $("#tempC").toggle(0);
-    $("#tempF").toggle(0);
-
-});
-
-$("#changeImage").on("click", function () {
-
-    location.reload(false);
-
-});
+$('#changeImage').on('click', function () {
+  location.reload(false)
+})
 
 $(document).ready(function () {
-
     // Using freegeoip.net as ip-api.com showed me as in Rushden ~100 miles from my actual location
-    $.getJSON('https://freegeoip.net/json/?callback=?', function (loc) {
+  $.getJSON('https://freegeoip.net/json/?callback=?', function (loc) {
+    $('#location').html('<h2>' + loc.city + ', ' + loc.region_name + ', ' + loc.country_name + '</h2>')
 
-        $('#location').html('<h2>' + loc.city + ', ' + loc.region_name + ', ' + loc.country_name + '</h2>');
+    var lat = loc.latitude
+    var lon = loc.longitude
 
-        var lat = loc.latitude;
-        var lon = loc.longitude;
+    var latAndLong = 'lat=' + lat + '&lon=' + lon
+    var weather = 'http://api.openweathermap.org/data/2.5/weather?' + latAndLong
+    var apiKey = '&appid=c96aa0ca207816ff216f6906929c8891'
 
-        var latAndLong = 'lat=' + lat + '&lon=' + lon;
-        var weather = 'http://api.openweathermap.org/data/2.5/weather?' + latAndLong;
-        var apiKey = '&appid=c96aa0ca207816ff216f6906929c8891';
-
-        $.getJSON(weather + apiKey, function (json) {
-
-            var myWeather = json.weather;
-            var mainWeather = json.main;
-            var temp = mainWeather.temp;
+    $.getJSON(weather + apiKey, function (json) {
+      var myWeather = json.weather
+      var mainWeather = json.main
+      var temp = mainWeather.temp
             // convert kelvin to fahrenheit and celsius
-            var tempF = Math.round(temp * 9 / 5 - 459.67);
-            var tempC = Math.round(temp - 273.15);
+      var tempF = Math.round(temp * 9 / 5 - 459.67)
+      var tempC = Math.round(temp - 273.15)
 
-            $("#main").html('<h2>' + myWeather[0].main + '</h2>');
-            $("#tempC").html('<h2>' + tempC + '° C</h2>'); // default to Metric
-            $("#tempF").html('<h2>' + tempF + '° F</h2>');
-            $("#tempF").toggle(0);
-
-        });
-
-    });
-
-});
+      $('#main').html('<h2>' + myWeather[0].main + '</h2>')
+      $('#tempC').html('<h2>' + tempC + '° C</h2>') // default to Metric
+      $('#tempF').html('<h2>' + tempF + '° F</h2>')
+      $('#tempF').toggle(0)
+    })
+  })
+})
 
 $(document).ready(function () {
-    var keyword = $("#main").text + ', weather, landscape';
-    $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", {
-            tags: keyword,
-            tagmode: "any",
-            format: "json"
-        },
+  var keyword = $('#main').text + ', weather, landscape'
+  $.getJSON('http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?', {
+    tags: keyword,
+    tagmode: 'any',
+    format: 'json'
+  },
         function (data) {
-            var rnd = Math.floor(Math.random() * data.items.length);
-            var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
-            $('body').css('background-image', "url('" + image_src + "')");
-            $('body').css({
-                "background-size": "cover",
-                "background-attachment": "fixed",
-                "background-repeat": "no-repeat"
-            });
-        });
-});
+          var rnd = Math.floor(Math.random() * data.items.length)
+          var image_src = data.items[rnd]['media']['m'].replace('_m', '_b')
+          $('body').css('background-image', "url('" + image_src + "')")
+          $('body').css({
+            'background-size': 'cover',
+            'background-attachment': 'fixed',
+            'background-repeat': 'no-repeat'
+          })
+        })
+})

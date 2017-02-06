@@ -16,7 +16,6 @@
 
 //     $("#newQuote").click(function () {
 
-
 //     });
 
 //     $("#newImage").click(function () {
@@ -28,7 +27,6 @@
 //         alert("you clicked");
 //     });
 // });
-
 
 // function getQuotes() {
 
