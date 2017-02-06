@@ -1,4 +1,76 @@
-.flex-container {
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: kanit, sans-serif;
+  margin: 0;
+  background-image: linear-gradient(260deg, grey 0%, blue 100%);
+}
+
+a {
+  color: white;
+  font-weight: 100;
+  letter-spacing: 2px;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px 5px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+a:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+
+/*flexbox stuff*/
+
+
+/*flex container*/
+
+.flex-nav ul {
+  border: 1px solid black;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+
+/*flrex item*/
+
+.flex-nav li {
+  flex: 1;
+}
+
+.flex-nav .social {
+  flex: 1;
+}
+
+@media all and (max-width:1000px) {
+  .flex-nav ul {
+    flex-wrap: wrap;
+  }
+
+}
+
+@media all and (max-width:500px) {
+  .flex-nav li {
+    flex-basis: 100%;
+  }
+}
+
+
+/*.flex-container {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-flow: row wrap;
@@ -73,4 +145,4 @@ footer {
 footer {
   -webkit-order: 3;
   order: 3;
-}
+}*/
