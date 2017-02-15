@@ -1,0 +1,208 @@
+/*
+Heading and body styles
+*/
+
+h1 {
+    font-family: Orbitron, monospace;
+    font-size: 50px;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+    background: #E0E0E0;
+}
+
+div.row {
+    margin: 60px 0;
+}
+
+
+/*
+Header stuffs
+*/
+
+header,
+.navbar-default {
+    background-color: #E0E0E0;
+}
+
+.navbar-default {
+    border-color: none !important;
+}
+
+.navbar-fixed-top {
+    border-width: 0;
+}
+
+#brand,
+.navbar-default .navbar-nav>li>a,
+header h1,
+.arrow-down {
+    color: #428bca;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: #428bca;
+}
+
+header nav a:after,
+.navbar-header a:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 1px;
+    width: 0%;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+}
+
+header nav a:hover:after,
+.navbar-header a:hover:after {
+    width: 100%;
+    background: #fc0217;
+}
+
+
+/*h2 style*/
+
+main h2 {
+    padding: 30px 0;
+    color: #428bca;
+    position: relative;
+    text-align: center;
+}
+
+
+/*added for the dividing line*/
+
+main h2 span {
+    background: #E0E0E0;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+}
+
+main h2:before {
+    background: #428bca;
+    content: "";
+    display: block;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+about h2 {
+    padding: 30px 0;
+    color: #428bca;
+    position: relative;
+    text-align: center;
+}
+
+
+/*added for the dividing line*/
+
+about h2 span {
+    background: #E0E0E0;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+}
+
+about h2:before {
+    background: #428bca;
+    content: "";
+    display: block;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+
+/*
+Added for the hover effect on the favicons
+*/
+
+
+/*
+.social {
+font-size: 40px;
+}
+*/
+
+.social a {
+    color: #000000;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social a:hover,
+.social a:focus {
+    color: #428bca;
+    text-shadow: 0px 0px 3px #428bca;
+}
+
+
+/*
+Sliding underline for links
+From here: http://bradsknutson.com/blog/css-sliding-underline/
+*/
+
+.sliding-middle-out {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 3px;
+}
+
+.sliding-middle-out:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+}
+
+.sliding-middle-out:hover:after {
+    width: 100%;
+    background: #428bca;
+}
+
+
+/*had to add this to keep the images the same size*/
+
+.thumbnail img {
+    height: 200px;
+    width: 100%;
+}
+
+
+/*flexbox stuff*/
+
+
+/* Some default styles to make each box visible */
+
+.box {
+    color: white;
+    /*font-size: 100px;*/
+    text-align: center;
+    /*text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);*/
+    /*padding: 10px;*/
+}
+
+.container-projects {
+    display: flex;
+    border: 10px solid mistyrose;
+    flex-wrap: wrap;
+    padding: 60px;
+}
+
+.box {
+    border: 5px solid yellow;
+    width: calc(33.33% - 20px);
+    margin: 10px;
+}
+
