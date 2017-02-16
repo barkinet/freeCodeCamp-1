@@ -1,0 +1,21 @@
+body {
+  background-color: gray;
+}
+
+.container_body {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+
+.list-group {
+  width: 66%;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, .6);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
