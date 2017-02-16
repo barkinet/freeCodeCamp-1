@@ -1,127 +1,127 @@
 <body>
-    <!-- FIRST LINE for the CSS files -->
-    <link href="https://fonts.googleapis.com/css?family=Kanit|Orbitron" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet" type="text/css">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-8 col-xs-offset-2">
-                <div class="well center-block">
-                    <h1 id="quotes"></h1>
-                    <h2 id="character-movie"></h2>
-                    <div class="footer">
-                        <button id="newQuote" class="btn btn-primary btn-responsive">NEW QUOTE</button>
-                        <!--<button id="newImage" class="btn btn-primary btn-responsive">NEW IMAGE</button>-->
-                        <button id="tweetQuote" class="btn btn-primary btn-responsive">TWEET QUOTE</button>
-                    </div>
-                </div>
-            </div>
+  <!-- FIRST LINE for the CSS files -->
+  <link href="https://fonts.googleapis.com/css?family=Kanit|Orbitron" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet" type="text/css">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="well center-block">
+          <h1 id="quotes"></h1>
+          <h2 id="character-movie"></h2>
+          <div class="footer">
+            <button id="newQuote" class="btn btn-primary btn-responsive">NEW QUOTE</button>
+            <!--<button id="newImage" class="btn btn-primary btn-responsive">NEW IMAGE</button>-->
+            <button id="tweetQuote" class="btn btn-primary btn-responsive">TWEET QUOTE</button>
+          </div>
         </div>
+      </div>
     </div>
-    <!--or just add the JS directly to the HTML file, that's ok, right?-->
-    <script>
-        window.onload = function () {
-            getQuotes();
-        };
-        // Get random quote
-        document.getElementById("newQuote").onclick = getQuotes;
-        //  Get new image
-        // document.getElementById("newImage").onclick = getImage;
-        // Tweet the quote
-        document.getElementById("tweetQuote").onclick = tweetQuote;
+  </div>
+  <!--or just add the JS directly to the HTML file, that's ok, right?-->
+  <script>
+    window.onload = function () {
+      getQuotes();
+    };
+    // Get random quote
+    document.getElementById("newQuote").onclick = getQuotes;
+    //  Get new image
+    // document.getElementById("newImage").onclick = getImage;
+    // Tweet the quote
+    document.getElementById("tweetQuote").onclick = tweetQuote;
 
-        function fetchQuotes(callback) {
-            // arnold json gist
-            const endpoint =
-                'https://gist.githubusercontent.com/spences10/ceee092f6fed36559036c94682b7a5f7/raw/7a27570759834ee454ee380ca42ebd47dc55e932/arnold_quotes.json'
-                // fetch gist
-            fetch(endpoint)
-                .then(blob => blob.json())
-                .then(data => callback(data));
-        }
-        // callback for quotes promise
-        function getQuotes() {
-            clearBox();
-            fetchQuotes(function (quotes) {
-                // get random quote from JSON 
-                const quoteID = getRandomInt(1, 100);
-                // get json data
-                var quoteStr = quotes[quoteID].quote
-                var characterMovieStr = quotes[quoteID].character + ' - ' + quotes[quoteID].movie
-                var para = document.createElement("p");
-                var node = document.createTextNode(quoteStr);
-                var element = document.getElementById("quotes");
-                para.appendChild(node);
-                element.appendChild(para);
-                para = document.createElement("p");
-                node = document.createTextNode(characterMovieStr);
-                element = document.getElementById("character-movie");
-                para.appendChild(node);
-                element.appendChild(para);
-            })
-        }
+    function fetchQuotes(callback) {
+      // arnold json gist
+      const endpoint =
+        'https://gist.githubusercontent.com/spences10/ceee092f6fed36559036c94682b7a5f7/raw/7a27570759834ee454ee380ca42ebd47dc55e932/arnold_quotes.json'
+      // fetch gist
+      fetch(endpoint)
+        .then(blob => blob.json())
+        .then(data => callback(data));
+    }
+    // callback for quotes promise
+    function getQuotes() {
+      clearBox();
+      fetchQuotes(function (quotes) {
+        // get random quote from JSON 
+        const quoteID = getRandomInt(1, 100);
+        // get json data
+        var quoteStr = quotes[quoteID].quote
+        var characterMovieStr = quotes[quoteID].character + ' - ' + quotes[quoteID].movie
+        var para = document.createElement("p");
+        var node = document.createTextNode(quoteStr);
+        var element = document.getElementById("quotes");
+        para.appendChild(node);
+        element.appendChild(para);
+        para = document.createElement("p");
+        node = document.createTextNode(characterMovieStr);
+        element = document.getElementById("character-movie");
+        para.appendChild(node);
+        element.appendChild(para);
+      })
+    }
 
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
-        // function getImage() {
-        //     display_random_image();
-        // }
+    // function getImage() {
+    //     display_random_image();
+    // }
 
-        function tweetQuote() {
-            var quoteStr = document.getElementById("quotes").innerText + ' - ' +
-                document.getElementById("character-movie").innerText + ' %23arniequotes';
-            window.open("https://twitter.com/home?status=" + quoteStr);
-        }
+    function tweetQuote() {
+      var quoteStr = document.getElementById("quotes").innerText + ' - ' +
+        document.getElementById("character-movie").innerText + ' %23arniequotes';
+      window.open("https://twitter.com/home?status=" + quoteStr);
+    }
 
-        function clearBox() {
-            document.getElementById("quotes").innerHTML = "";
-            document.getElementById("character-movie").innerHTML = "";
-        }
+    function clearBox() {
+      document.getElementById("quotes").innerHTML = "";
+      document.getElementById("character-movie").innerHTML = "";
+    }
 
-        //         function display_random_image() {
-        //             var theImages = [{
-        //                 src: "http://media.gettyimages.com/photos/body-builder-actor-and-future-governor-of-california-arnold-poses-a-picture-id83149193",
-        //                 width: 500
-        //             }, {
-        //                 src: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
-        //                 width: "320"
-        //             }, {
-        //                 src: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg",
-        //                 width: "500"
-        //             }];
+    //         function display_random_image() {
+    //             var theImages = [{
+    //                 src: "http://media.gettyimages.com/photos/body-builder-actor-and-future-governor-of-california-arnold-poses-a-picture-id83149193",
+    //                 width: 500
+    //             }, {
+    //                 src: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+    //                 width: "320"
+    //             }, {
+    //                 src: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg",
+    //                 width: "500"
+    //             }];
 
-        //             var preBuffer = [];
-        //             for (var i = 0, j = theImages.length; i < j; i++) {
-        //                 preBuffer[i] = new Image();
-        //                 preBuffer[i].src = theImages[i].src;
-        //                 preBuffer[i].width = theImages[i].width;
-        //             }
+    //             var preBuffer = [];
+    //             for (var i = 0, j = theImages.length; i < j; i++) {
+    //                 preBuffer[i] = new Image();
+    //                 preBuffer[i].src = theImages[i].src;
+    //                 preBuffer[i].width = theImages[i].width;
+    //             }
 
-        //             // create random image number  
-        //             function getRandomInt(min, max) {
-        //                 //  return Math.floor(Math.random() * (max - min + 1)) + min;  
+    //             // create random image number  
+    //             function getRandomInt(min, max) {
+    //                 //  return Math.floor(Math.random() * (max - min + 1)) + min;  
 
-        //                 imn = Math.floor(Math.random() * (max - min + 1)) + min;
-        //                 return preBuffer[imn];
-        //             }
+    //                 imn = Math.floor(Math.random() * (max - min + 1)) + min;
+    //                 return preBuffer[imn];
+    //             }
 
-        //             // 0 is first image,   preBuffer.length - 1) is  last image  
+    //             // 0 is first image,   preBuffer.length - 1) is  last image  
 
-        //             var newImage = getRandomInt(0, preBuffer.length - 1);
+    //             var newImage = getRandomInt(0, preBuffer.length - 1);
 
-        //             // remove the previous images  
-        //             var images = document.getElementsByTagName('img');
-        //             var l = images.length;
-        //             for (var p = 0; p < l; p++) {
-        //                 images[0].parentNode.removeChild(images[0]);
-        //             }
-        //             // display the image    
-        //             document.body.appendChild(newImage);
-        //         }
-    </script>
-    <!-- LAST LINE for the JavaScript file -->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    //             // remove the previous images  
+    //             var images = document.getElementsByTagName('img');
+    //             var l = images.length;
+    //             for (var p = 0; p < l; p++) {
+    //                 images[0].parentNode.removeChild(images[0]);
+    //             }
+    //             // display the image    
+    //             document.body.appendChild(newImage);
+    //         }
+  </script>
+  <!-- LAST LINE for the JavaScript file -->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="RandomQuoteMachine.js"></script>-->
 </body>
