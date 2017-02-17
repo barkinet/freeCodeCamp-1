@@ -10,10 +10,9 @@ const channels = [
   'noobs2ninjas'
 ]
 
-
 channels.forEach((channel) => {
-  const endpoint = `https://wind-bow.gomix.me/twitch-api//channels/${channel}`
-  fetch(endpoint)
+  const chan = `https://wind-bow.gomix.me/twitch-api//channels/${channel}`
+  fetch(chan)
     .then(response => response.json())
     .then(json => addChannel(json))
     // .then(json => console.table(json))
@@ -35,11 +34,8 @@ function addChannel (json) {
       <img class="logo" src="${json.logo}">
       <div class="description">
         <h4>${json.name}</h4>
-        <p>Currently not streaming</p>
+        <p>${isStreaming(json.url)}</p>
       </div>
-    </div>
-    <div class="state" id="state0">
-      <h1 style="color:#d9534f; font-weight:Arial">Offline</h1>
     </div>
   </a>
   `
@@ -52,5 +48,22 @@ function addChannel (json) {
 
   while (newcontent.firstChild) {
     mydiv.appendChild(newcontent.firstChild)
+  }
+}
+
+function isStreaming (channelName) {
+  const url = ''
+  channels.forEach((channel) => {
+    const chan = `https://wind-bow.gomix.me/twitch-api//streams/${channel}`
+    fetch(chan)
+      .then(response => response.json())
+      .then(json => urlMatch 
+      .catch(error => console.log(error))
+  })
+}
+
+function urlMatch (url, match) {
+  if (url === match) {
+    return true
   }
 }
