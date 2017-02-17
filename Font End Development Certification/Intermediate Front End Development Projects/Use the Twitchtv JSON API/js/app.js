@@ -39,12 +39,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function addChannel (json) {
   const markup = `
-    <a href="${json.url}" target="_blank" class="list-group-item" id="_0">
+    <a href="${json.url}" target="_blank" class="list-group-item" tag="${(json.stream === 'Offline') ? '_0' : '_1'}">
     <div class="av_des">
       <img class="logo" src="${json.logo}">
       <div class="description">
-        <h4>${json.name}</h4>
-        <p>${json.stream}${json.game}</p>
+        <h2>${json.name}</h2>
+        <h3>${json.stream}</h3>
+        <h3>${json.game}</h3>
       </div>
     </div>
   </a>
@@ -68,12 +69,21 @@ function buildPageItems (channelJson) {
         'url': channelJson.url,
         'logo': channelJson.logo,
         'stream': (json.stream === null) ? 'Offline' : 'Online',
-        'game': (json.stream === null) ? '' : ' Playing ' + json.stream.game
+        'game': (json.stream === null) ? '' : 'Playing: ' + json.stream.game
       }
       pageItems.push(channel)
-    addChannel (channel)
+      addChannel(channel)
     })
     .catch(error => console.log(error))
 }
 
-console.log(pageItems)
+document.getElementById('btnAll').addEventListener('click', function () {
+  document.getElementsByTagName('_0').style.display = 'none'
+})
+document.getElementById('btnOnline').addEventListener('click', function () {
+  document.getElementByI0d('_0').style.display = 'none'
+})
+document.getElementById('btnOffline').addEventListener('click', function () {
+  document.getElementByI0d('_0').style.display = 'none'
+})
+
