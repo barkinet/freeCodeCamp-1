@@ -1,3 +1,9 @@
+/**
+ * The way this should work is that the `channels` array is used to 
+ * build up a json object to add all the parts to it to be used
+ * before building the page
+ */
+
 const channels = [
   'Joltzdude139',
   'ESL_SC2',
@@ -10,13 +16,21 @@ const channels = [
   'noobs2ninjas'
 ]
 
+const page = []
+
 channels.forEach((channel) => {
   const chan = `https://wind-bow.gomix.me/twitch-api//channels/${channel}`
   fetch(chan)
     .then(response => response.json())
-    .then(json => addChannel(json))
+    .then(json => buildPageHtml(json))
+    // .then(json => addChannel(json))
     // .then(json => console.table(json))
     // .then(json => console.log(json))
+    .catch(error => console.log(error))
+  const stream = `https://wind-bow.gomix.me/twitch-api//streams/${channel}`
+  fetch(stream)
+    .then(response => response.json())
+    .then(json => buildPageHtml(json))
     .catch(error => console.log(error))
 })
 
@@ -57,13 +71,25 @@ function isStreaming (channelName) {
     const chan = `https://wind-bow.gomix.me/twitch-api//streams/${channel}`
     fetch(chan)
       .then(response => response.json())
-      .then(json => urlMatch 
+      .then(json => console.log(json))
       .catch(error => console.log(error))
   })
 }
 
-function urlMatch (url, match) {
-  if (url === match) {
-    return true
+function buildPageHtml (fetchJson) {
+  const channelName = ''
+  const channelUrl = ''
+  const channelLogo = ''
+
+  console.log(`fetchJson:`, console.log(fetchJson))
+
+  const channel = {
+    'channelName': channelName,
+    'channelUrl': channelUrl,
+    'channelLogo': channelLogo
   }
+
+  page.push(channel)
+
+  console.log(page)
 }
