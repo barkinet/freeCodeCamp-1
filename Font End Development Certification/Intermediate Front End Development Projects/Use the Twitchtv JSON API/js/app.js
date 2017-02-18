@@ -16,9 +16,13 @@ const channels = [
   'noobs2ninjas'
 ]
 
+/*
+ * Channels that do no exist
+ * 'brunofin', 'comster404'
+ */
+
 const pageItems = []
 
-let id = 0
 channels.forEach((channel) => {
   const chan = `https://wind-bow.gomix.me/twitch-api//channels/${channel}`
   fetch(chan)
@@ -30,15 +34,12 @@ channels.forEach((channel) => {
     .catch(error => console.log(error))
 })
 
-console.log(document.readyState)
-
 document.addEventListener('DOMContentLoaded', function () {
   console.log(document.readyState)
   // add things
 })
 
-
-function addChannel(json) {
+function addChannel (json) {
   const markup = `
     <a href="${json.url}" target="_blank" class="list-group-item">
     <div class="channel-description">
@@ -60,15 +61,15 @@ function addChannel(json) {
   }
 }
 
-function buildPageItems(channelJson) {
+function buildPageItems (channelJson) {
   const stream = `https://wind-bow.gomix.me/twitch-api//streams/${channelJson.name}`
   fetch(stream)
     .then(response => response.json())
     .then(json => {
       const channel = {
-        'name': channelJson.name,
+        'name': (channelJson.name === undefined) ? 'Channel does not exist' : channelJson.name,
         'url': channelJson.url,
-        'logo': channelJson.logo,
+        'logo': (channelJson.logo === undefined) ? '' : channelJson.logo,
         'stream': (json.stream === null) ? 'Offline' : 'Online',
         'game': (json.stream === null) ? '' : 'Playing: ' + json.stream.game
       }
@@ -79,24 +80,26 @@ function buildPageItems(channelJson) {
 }
 
 document.getElementById('btnAll').addEventListener('click', function () {
-  // pageItems.forEach((page) => {
-  //   console.log(page)
-  // })
-  toogleDisplay()
+  toggleDisplay('All')
+  // document.getElementById('btnAll').classList.toggle('btn-primary')
 })
 
 document.getElementById('btnOnline').addEventListener('click', function () {
-  document.getElementById('_0').style.display = 'none'
+  toggleDisplay('Offline')
+  // document.getElementById('btnOnline').classList.toggle('btn-primary')
 })
 document.getElementById('btnOffline').addEventListener('click', function () {
-  document.getElementById('_0').style.display = 'none'
+  toggleDisplay('Online')
+  // document.getElementById('btnOffline').classList.toggle('btn-primary')
 })
 
-function toogleDisplay () {
+function toggleDisplay (word) {
   const elements = document.getElementsByClassName('list-group-item')
   for (const element of elements) {
-    if (element.textContent.match('Offline')) {
+    if (element.textContent.match(word)) {
       element.style.display = 'none' // block
+    } else {
+      element.style.display = 'block'
     }
   }
 }
