@@ -1,5 +1,7 @@
 # Use the Twitchtv JSON API
 
+## Complete solution [here](https://spences10.github.io/freeCodeCamp/Font%20End%20Development%20Certification/Intermediate%20Front%20End%20Development%20Projects/Use%20the%20Twitchtv%20JSON%20API/index.html)
+
 1. Objective: Build a CodePen.io app that is functionally similar to this: [https://codepen.io/FreeCodeCamp/full/Myvqmo/](https://codepen.io/FreeCodeCamp/full/Myvqmo/).
 
 2. Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
