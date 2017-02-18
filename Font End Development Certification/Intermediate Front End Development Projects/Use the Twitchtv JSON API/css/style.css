@@ -1,21 +1,33 @@
-/*body {
-  background-color: gray;
+body {
+  background-color: #337AB7;
+  margin: none;
+  padding: none;
+  background-image: url('http://i.vimeocdn.com/video/570236538_1280x720.jpg');
 }
 
-.container_body {
-  display: flex;
-  justify-content: center;
-  margin-top: 5%;
-  margin-bottom: 2%;
+.container-body {
+  /* The main content section of the page */
+  background-color: #34495e;
+  background-image: url('http://i.vimeocdn.com/video/570236538_1280x720.jpg');
+  color: white;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 50%;
+  padding-bottom: 9px;
+  border-radius: 10px;
 }
 
-.list-group {
-  width: 66%;
-  box-shadow: 8px 8px 8px rgba(0, 0, 0, .6);
+.list-group-item {
+  margin: 4px 0px;
+  border-radius: 5px;
 }
 
-nav {
-  display: flex;
-  align-items: center;
+/*.streamer:hover {
+  background-color: blue;
 }*/
 
+.logo { /* logos */
+  width: 40%;
+  border-radius: 10%;
+  margin: 12px 0px 10px 15px;
+}

@@ -16,6 +16,11 @@ const channels = [
   'noobs2ninjas'
 ]
 
+/*
+ * Channels that do no exist
+ * 'brunofin', 'comster404'
+ */
+
 const pageItems = []
 
 channels.forEach((channel) => {
@@ -29,22 +34,20 @@ channels.forEach((channel) => {
     .catch(error => console.log(error))
 })
 
-console.log(document.readyState)
-
 document.addEventListener('DOMContentLoaded', function () {
   console.log(document.readyState)
   // add things
 })
 
-
 function addChannel (json) {
   const markup = `
-    <a href="${json.url}" target="_blank" class="list-group-item" id="_0">
-    <div class="av_des">
+    <a href="${json.url}" target="_blank" class="list-group-item">
+    <div class="channel-description">
       <img class="logo" src="${json.logo}">
       <div class="description">
-        <h4>${json.name}</h4>
-        <p>${json.stream}${json.game}</p>
+        <h2>${json.name}</h2>
+        <h3>${json.stream}</h3>
+        <h3>${json.game}</h3>
       </div>
     </div>
   </a>
@@ -64,16 +67,39 @@ function buildPageItems (channelJson) {
     .then(response => response.json())
     .then(json => {
       const channel = {
-        'name': channelJson.name,
+        'name': (channelJson.name === undefined) ? 'Channel does not exist' : channelJson.name,
         'url': channelJson.url,
-        'logo': channelJson.logo,
+        'logo': (channelJson.logo === undefined) ? '' : channelJson.logo,
         'stream': (json.stream === null) ? 'Offline' : 'Online',
-        'game': (json.stream === null) ? '' : ' Playing ' + json.stream.game
+        'game': (json.stream === null) ? '' : 'Playing: ' + json.stream.game
       }
       pageItems.push(channel)
-    addChannel (channel)
+      addChannel(channel)
     })
     .catch(error => console.log(error))
 }
 
-console.log(pageItems)
+document.getElementById('btnAll').addEventListener('click', function () {
+  toggleDisplay('All')
+  // document.getElementById('btnAll').classList.toggle('btn-primary')
+})
+
+document.getElementById('btnOnline').addEventListener('click', function () {
+  toggleDisplay('Offline')
+  // document.getElementById('btnOnline').classList.toggle('btn-primary')
+})
+document.getElementById('btnOffline').addEventListener('click', function () {
+  toggleDisplay('Online')
+  // document.getElementById('btnOffline').classList.toggle('btn-primary')
+})
+
+function toggleDisplay (word) {
+  const elements = document.getElementsByClassName('list-group-item')
+  for (const element of elements) {
+    if (element.textContent.match(word)) {
+      element.style.display = 'none' // block
+    } else {
+      element.style.display = 'block'
+    }
+  }
+}
