@@ -18,6 +18,7 @@ const channels = [
 
 const pageItems = []
 
+let id = 0
 channels.forEach((channel) => {
   const chan = `https://wind-bow.gomix.me/twitch-api//channels/${channel}`
   fetch(chan)
@@ -37,10 +38,10 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 
-function addChannel (json) {
+function addChannel(json) {
   const markup = `
-    <a href="${json.url}" target="_blank" class="list-group-item" tag="${(json.stream === 'Offline') ? '_0' : '_1'}">
-    <div class="av_des">
+    <a href="${json.url}" target="_blank" class="list-group-item">
+    <div class="channel-description">
       <img class="logo" src="${json.logo}">
       <div class="description">
         <h2>${json.name}</h2>
@@ -59,7 +60,7 @@ function addChannel (json) {
   }
 }
 
-function buildPageItems (channelJson) {
+function buildPageItems(channelJson) {
   const stream = `https://wind-bow.gomix.me/twitch-api//streams/${channelJson.name}`
   fetch(stream)
     .then(response => response.json())
@@ -78,12 +79,24 @@ function buildPageItems (channelJson) {
 }
 
 document.getElementById('btnAll').addEventListener('click', function () {
-  document.getElementsByTagName('_0').style.display = 'none'
-})
-document.getElementById('btnOnline').addEventListener('click', function () {
-  document.getElementByI0d('_0').style.display = 'none'
-})
-document.getElementById('btnOffline').addEventListener('click', function () {
-  document.getElementByI0d('_0').style.display = 'none'
+  // pageItems.forEach((page) => {
+  //   console.log(page)
+  // })
+  toogleDisplay()
 })
 
+document.getElementById('btnOnline').addEventListener('click', function () {
+  document.getElementById('_0').style.display = 'none'
+})
+document.getElementById('btnOffline').addEventListener('click', function () {
+  document.getElementById('_0').style.display = 'none'
+})
+
+function toogleDisplay () {
+  const elements = document.getElementsByClassName('list-group-item')
+  for (const element of elements) {
+    if (element.textContent.match('Offline')) {
+      element.style.display = 'none' // block
+    }
+  }
+}
