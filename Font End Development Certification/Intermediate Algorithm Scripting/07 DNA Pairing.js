@@ -5,7 +5,7 @@
  * are grouped into one encapsulating array.
  */
 
-function pairElement(str) {
+function pairElement (str) {
   const paired = []
 
   const search = function (char) {
