@@ -18,7 +18,7 @@
  */
 
 function uniteUnique () {
-  var returnArray = []
+  let returnArray = []
 
   for (const argument of arguments) {
     for (const array of argument) {
