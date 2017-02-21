@@ -18,13 +18,11 @@
  */
 
 function uniteUnique () {
-  var returnArray = []
+  let returnArray = []
 
   for (const argument of arguments) {
     for (const array of argument) {
-      // console.log(array)
       if (returnArray.indexOf(array) < 0) {
-        console.log(array)
         returnArray.push(array)
       }
     }
