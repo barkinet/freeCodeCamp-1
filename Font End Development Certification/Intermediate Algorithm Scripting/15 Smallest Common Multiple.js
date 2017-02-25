@@ -14,14 +14,14 @@ function smallestCommons (arr) {
     return b - a
   })
 
-  var newArr = []
+  let newArr = []
   for (var i = arr[0]; i >= arr[1]; i--) {
     newArr.push(i)
   }
 
-  var quot = 0
-  var loop = 1
-  var n
+  let quot = 0
+  let loop = 1
+  let n
 
   do {
     quot = newArr[0] * loop * newArr[1]
