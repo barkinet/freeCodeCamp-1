@@ -24,7 +24,7 @@ const channels = [
 const pageItems = []
 
 channels.forEach((channel) => {
-  const chan = `https://wind-bow.gomix.me/twitch-api//channels/${channel}`
+  const chan = `https://wind-bow.glitch.me/twitch-api//channels/${channel}`
   fetch(chan)
     .then(response => response.json())
     .then(json => buildPageItems(json))
@@ -62,7 +62,7 @@ function addChannel (json) {
 }
 
 function buildPageItems (channelJson) {
-  const stream = `https://wind-bow.gomix.me/twitch-api//streams/${channelJson.name}`
+  const stream = `https://wind-bow.glitch.me/twitch-api//streams/${channelJson.name}`
   fetch(stream)
     .then(response => response.json())
     .then(json => {
